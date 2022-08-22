@@ -33,6 +33,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseStaticFiles();
 
 using (var scope = app.Services.CreateScope()) 
 {
