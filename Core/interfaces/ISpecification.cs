@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Core.Specifications
+namespace Core.Interfaces
 {
     public interface ISpecification<T>
     {
