@@ -1,3 +1,10 @@
 deletee commit recently
 git reset HEAD^ # remove commit locally
 git push origin +HEAD # force-push the new HEAD commit
+
+
+// delete branch locally
+git branch -d localBranchName
+
+// delete branch remotely
+git push origin --delete remoteBranchName
