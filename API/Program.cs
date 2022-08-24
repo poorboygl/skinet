@@ -2,17 +2,20 @@ using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using API.Middleware;
 using API.Extensions;
+using API.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
 builder.Services.AddControllers();
-
+//Create mapping
+builder.Services.AddAutoMapper(typeof(MappingProfiles));
 builder.Services.AddEndpointsApiExplorer();
 //connect SQL lite
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<StoreContext>(x=>x.UseSqlite(connectionString));
+
 //add custom service
 builder.Services.AddApplicationServices();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
