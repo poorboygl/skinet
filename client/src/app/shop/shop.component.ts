@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { IBrand } from '../shared/models/brand';
 import { IProduct } from '../shared/models/product';
+import { IType } from '../shared/models/productType';
 import { ShopService } from './shop.service';
 
 @Component({
@@ -9,18 +11,48 @@ import { ShopService } from './shop.service';
 })
 export class ShopComponent implements OnInit {
   products: IProduct[];
+  brands: IBrand[];
+  types : IType[];
 
   constructor(private shopService : ShopService) { }
 
   ngOnInit(): void {
-    this.shopService.getProduct().subscribe({
-      next: (response) => this.products = response.data,
-      error: (e) => console.error(e),
-      complete: () => console.info('complete') 
-    }
-      // response =>{ this.products = response.data},
-      // error =>{ console.log(error)}   
+    this.getProduct();
+    this.getBrands();
+    this.getTypes();
+    
+  }
+
+  getProduct(){
+    this.shopService.getProduct().subscribe(
+      {
+        next: (response) => this.products = response.data,
+        error: (e) => console.error(e),
+        complete: () => console.info('Add products complete') 
+      }
+        // response =>{ this.products = response.data},
+      // error =>{ console.log(error)}  
+    )
+  }
+      
+
+  getBrands(){
+    this.shopService.getBrands().subscribe(
+      {
+        next: (response) => this.brands = response,
+        error: (e) => console.error(e),
+        complete: () => console.info('Add brands complete') 
+      }
     )
   }
 
+  getTypes(){
+    this.shopService.getTypes().subscribe(
+      {
+        next: (response) => this.types = response,
+        error: (e) => console.error(e),
+        complete: () => console.info('Add Types complete') 
+      }
+    )
+  }
 }
