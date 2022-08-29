@@ -10,7 +10,7 @@
             </select>
             <h5 class="text-warning ml-3"> Brand</h5>
             <ul class="list-group my-3">
-                <li class="list-group-item" *ngFor="let brand of brands" [class.active]="brand.id === this.brandIdselected" 
+                <li class="list-group-item" *ngFor="let brand of brands" [class.active]="brand.id === this.shopParams.brandId" 
                 [value]="brand.id" (click)="onBrandSelected(brand.id)">
                     {{brand.name}}
                 </li>
@@ -18,7 +18,7 @@
             
             <h5 class="text-warning ml-3"> Type</h5>
             <ul class="list-group my-3">
-                <li class="list-group-item" *ngFor="let type of types"  [class.active]="type.id === this.typeIdSelected" 
+                <li class="list-group-item" *ngFor="let type of types"  [class.active]="type.id === this.shopParams.typeId" 
                 [value]="type.id" (click)="onTypeSelected(type.id)">
                     {{type.name}}
                 </li>               
@@ -41,9 +41,24 @@
             <div class="row">
               <div class="col-4" *ngFor="let item of products">
                 <app-product-item [product]="item"></app-product-item>
-              </div>
-              
+              </div>  
             </div>
+
+            <div class="d-flex justify-content-center">
+                <pagination 
+                [boundaryLinks]="true" 
+                [totalItems]="this.totalCount"
+                (pageChanged)="onPageChanged($event)"
+                [itemsPerPage]="this.shopParams.pageSize"
+                previousText="&lsaquo;" 
+                nextText="&rsaquo;" 
+                firstText="&laquo;" 
+                lastText="&raquo;">
+                </pagination>
+
+            </div>
+
+            
         </section>
     </div>
 </div>
