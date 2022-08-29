@@ -30,7 +30,15 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/AUIGrid_clone/js/AUIGrid/ajax.js",
+              "src/AUIGrid_clone/js/AUIGrid/common.js",
+              "src/AUIGrid_clone/js/AUIGrid/AUIGridLicense.js",
+              "src/AUIGrid_clone/js/AUIGrid/AUIGrid.js",
+              "src/AUIGrid_clone/js/AUIGrid/jszip.js",
+              "src/AUIGrid_clone/js/AUIGrid/shim.js",
+              "src/AUIGrid_clone/js/AUIGrid/xlsx.js"
+            ]
           },
           "configurations": {
             "production": {
