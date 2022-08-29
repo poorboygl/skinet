@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -14,7 +14,6 @@ import { ShopModule } from './shop/shop.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserModule,
     HttpClientModule,
     CoreModule,
     ShopModule
