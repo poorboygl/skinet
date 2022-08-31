@@ -17,7 +17,6 @@ import { ShopModule } from './shop/shop.module';
     AppRoutingModule,
     HttpClientModule,
     CoreModule,
-    ShopModule,
     HomeModule
   ],
   providers: [],

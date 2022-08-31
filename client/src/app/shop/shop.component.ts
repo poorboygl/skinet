@@ -64,8 +64,8 @@ export class ShopComponent implements OnInit {
     this.shopService.getTypes().subscribe(
       {
         next: (response) => this.types = [{id:0, name: 'All'}, ...response],
-        error: (e) => console.error(e),
-        complete: () => console.info('Add Types complete') 
+        error: (e) => console.error(e)
+        // ,complete: () => console.info('Add Types complete') 
       }
     )
   }
