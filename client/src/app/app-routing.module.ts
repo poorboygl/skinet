@@ -8,12 +8,19 @@ import { ProductDetailsComponent } from './shop/product-details/product-details.
 import { ShopComponent } from './shop/shop.component';
 
 const routes: Routes = [
-  {path:'',component: HomeComponent},
-  {path:'test-error',component: TestErrorComponent},
-  {path:'server-error',component: ServerErrorComponent},
-  {path:'not-found',component: NotFoundComponent},
-  {path: 'shop',loadChildren:()=>import('./shop/shop.module').then(mod=>mod.ShopModule)},
-  {path:'**',redirectTo:'', pathMatch:'full'}
+  {path:'', component: HomeComponent,
+    data:{
+      breakcrumb:{
+        label: 'app home',
+        info: 'home'
+      }
+    }
+  },
+  {path:'test-error', component: TestErrorComponent, data:{breakcrumb: 'Test Errors'}},
+  {path:'server-error', component: ServerErrorComponent, data:{breakcrumb: 'Server Errors'}},
+  {path:'not-found', component: NotFoundComponent, data:{breakcrumb: 'Not Found'}},
+  {path: 'shop', loadChildren:()=>import('./shop/shop.module').then(mod=>mod.ShopModule),data:{breakcrumb: 'Shop'}},
+  {path:'**',redirectTo:'not-found', pathMatch:'full'}
 
 ];
 
