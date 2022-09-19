@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using API.Middleware;
 using API.Extensions;
 using API.Helpers;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,10 @@ builder.Services.AddEndpointsApiExplorer();
 //connect SQL lite
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<StoreContext>(x=>x.UseSqlite(connectionString));
+builder.Services.AddSingleton<ConnectionMultiplexer>(c =>{
+    var configuration = ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("Redis"),true);
+    return ConnectionMultiplexer.Connect(configuration);
+});
 
 //add custom service
 builder.Services.AddApplicationServices();
