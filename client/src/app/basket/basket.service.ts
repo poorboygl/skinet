@@ -14,7 +14,7 @@ export class BasketService {
   private basketSource = new BehaviorSubject<IBasket>(null!);
   basket$ = this.basketSource.asObservable();
 
-  constructor( private http: HttpClient) { }
+  constructor( private http: HttpClient) {}
 
   getBasket (id: string){
     return this.http.get<IBasket>(this.baseUrl+ 'basket?id=' + id)
@@ -48,6 +48,7 @@ export class BasketService {
     basket.items = this.addOrUpdateItem(basket.items, itemToAdd, quantity);
     this.setBasket(basket);
   }
+
   private addOrUpdateItem(items: IBasketItem[], itemToAdd: IBasketItem, quantity: number)
   : IBasketItem[] {
     console.log(items);
@@ -60,6 +61,7 @@ export class BasketService {
     }
     return items;
   }
+  
   private createBasket(): IBasket {
     const basket = new Basket();
     localStorage.setItem('basket_id', basket.id);
