@@ -28,3 +28,6 @@ git remote -v
 
 docker
 docker-compose up --detach
+
+git rm dump.rdb
+git rm dump.rdb -f
