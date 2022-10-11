@@ -4,6 +4,7 @@ using API.Middleware;
 using API.Extensions;
 using API.Helpers;
 using StackExchange.Redis;
+using Infrastructure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,9 @@ builder.Services.AddAutoMapper(typeof(MappingProfiles));
 builder.Services.AddEndpointsApiExplorer();
 //connect SQL lite
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<AppIdentityDbContext>(x => {
+    x.UseSqlite(builder.Configuration.GetConnectionString("IdentityConnection"));
+});
 builder.Services.AddDbContext<StoreContext>(x=>x.UseSqlite(connectionString));
 builder.Services.AddSingleton<IConnectionMultiplexer>(c =>{
     var configuration = ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("Redis"),true);
