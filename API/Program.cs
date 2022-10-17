@@ -29,7 +29,7 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(c =>{
 
 //add custom service
 builder.Services.AddApplicationServices();
-builder.Services.AddIdentityServices();
+builder.Services.AddIdentityServices(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddSwaggerDocumentation();
 builder.Services.AddCors(opt =>{
@@ -53,6 +53,7 @@ app.UseHttpsRedirection();
 //app.UseRouting();
 app.UseStaticFiles();
 app.UseCors("CorsPolicy");
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
