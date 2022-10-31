@@ -32,7 +32,7 @@ namespace Infrastructure.Data
                 .Include(p => p.ProductBrand)
                 .FirstOrDefaultAsync(p=> p.Id == id);
         }
-           public async Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync()
+        public async Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync()
         {
             return await _context.ProductBrands.ToListAsync();
         }
