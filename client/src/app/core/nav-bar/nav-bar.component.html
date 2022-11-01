@@ -11,7 +11,7 @@ mb-3 bg-white border-bottom shadow-sm fixed-top">
             <i class="fa fa-shopping-cart fa-2x mr-5 text-dark me-4"></i>
             <div *ngIf="(basket$ | async) as basket" class="cart-no">{{ basket.items.length}}</div>
         </a> 
-        <button type="button" class="btn btn-outline-secondary me-2">Login</button>
-        <button type="button" class="btn btn-outline-secondary me-2">Sign-up</button>     
+        <a routerLink="/account/login"  class="btn btn-outline-secondary me-2">Login</a>
+        <a routerLink="/account/register" class="btn btn-outline-secondary me-2">Sign-up</a>     
     </div>
   </div>
