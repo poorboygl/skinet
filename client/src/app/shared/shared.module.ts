@@ -5,6 +5,7 @@ import { PagingHeaderComponent } from './components/paging-header/paging-header.
 import { PaperComponent } from './components/paper/paper.component'
 import {CarouselModule } from 'ngx-bootstrap/carousel';
 import { OrderTotalsComponent } from './components/order-totals/order-totals.component'
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,14 +17,16 @@ import { OrderTotalsComponent } from './components/order-totals/order-totals.com
   imports: [
     CommonModule,
     PaginationModule.forRoot(),
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    ReactiveFormsModule
   ],
   exports: [
     PaginationModule,
     PagingHeaderComponent,
     PaperComponent,
     CarouselModule,
-    OrderTotalsComponent
+    OrderTotalsComponent,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
