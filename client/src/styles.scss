@@ -7,6 +7,7 @@
 // @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
 // @import "node_modules/font-awesome/css/font-awesome";
 @import "node_modules/ngx-spinner/animations/timer";
+@import "bootstrap/scss/bootstrap";
 
 .xng-breadcrumb-root {
     padding: 8px 16px;
@@ -22,3 +23,5 @@ label.xng-breadcrumb-trail {
 .xng-breadcrumb-separator {
     padding: 0 0;
 }
+/* Importing Bootstrap SCSS file. */
+

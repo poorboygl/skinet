@@ -19,7 +19,10 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
     this.basket$ = this.basketService.basket$;
     this.currentUser$ = this.accountService.currentUser$;
-    
+  }
+
+  logout(){
+    this.accountService.logout();
   }
 
 }
