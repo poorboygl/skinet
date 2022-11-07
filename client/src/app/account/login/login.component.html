@@ -6,11 +6,23 @@
             <div class="form-floating">
               <input formControlName="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
               <label for="floatingInput">Email address</label>
+              <span class="text-danger" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched 
+              && loginForm.get('email')?.errors?.required">
+                Email address is required
+              </span>
+              <span class="text-danger" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched 
+              && loginForm.get('email')?.errors?.pattern">
+                Email address is not valid
+              </span>
             </div>
 
             <div class="form-floating">
               <input formControlName="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
               <label for="floatingPassword">Password</label>
+              <span class="text-danger" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched 
+              && loginForm.get('password')?.errors?.required">
+                Email address is required
+              </span>
             </div>
         
             <div class="checkbox mb-3">
@@ -18,7 +30,15 @@
                 <input type="checkbox" value="remember-me"> Remember me
               </label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+
+            <button [disabled]="loginForm.invalid" class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
           </form>
+          <div class="col-4">
+            <p>Form status: {{loginForm.status}}</p>
+            <p>Email status: {{ loginForm.get('email')?.status}}</p>
+            <p>Email Touched: {{ loginForm.get('email')?.touched}}</p>
+            <p>Email Dirty: {{ loginForm.get('email')?.dirty}}</p>
+            <pre>{{ loginForm.value | json}}</pre>
+          </div>
     </div>
 </div>
