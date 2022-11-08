@@ -34,3 +34,6 @@ git rm dump.rdb -f
 
 
 https://valor-software.com/ngx-bootstrap/#/
+
+
+Ctrl+D sua het tat ca
