@@ -25,7 +25,7 @@ export class TextInputComponent implements OnInit, ControlValueAccessor {
 
   onChange(event: any){}
 
-  onTouch(){
+  onTouched(){
 
   }
 
@@ -36,7 +36,7 @@ export class TextInputComponent implements OnInit, ControlValueAccessor {
     this.onChange = fn;
   }
   registerOnTouched(fn: any): void {
-   this.onTouch = fn;
+   this.onTouched = fn;
   }
 
 }
