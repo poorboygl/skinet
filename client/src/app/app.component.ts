@@ -18,19 +18,21 @@ export class AppComponent implements OnInit  {
   }
 
   loadCurrentUser(){
-    const token = JSON.parse(localStorage.getItem('token')!) || "";
-    this.accountService.loadCurrentUser(token).subscribe?({
+    
+    const token =localStorage.getItem('token')|| '';
+    this.accountService.loadCurrentUser(token)!.subscribe({
       next : () => console.log('Loaded User'),
-      error: (e: any ) => console.log(e)
-      // ,complete: () => console.info('complete') 
-    }): null;
+      error: (e: any ) => console.log(e),
+      complete: () => console.info('complete') 
+    });
+
   }
 
   loadBasket(){
     const basketId = localStorage.getItem('basket_id');
     if(basketId){
       this.basketService.getBasket(basketId).subscribe({
-        next: () => console.log('Initialised basket'),
+        next: () => console.log('  basket'),
         error: (e) => console.log(e), 
       });
     }

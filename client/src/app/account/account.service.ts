@@ -18,21 +18,18 @@ export class AccountService {
 
 
   loadCurrentUser(token: string){
-    if (token === null || token === ''){
-      this.currentUserSource.next(null!);
-      return of(null);
+    if ( token !== '' && token !== null){ 
+      let headers = new HttpHeaders();
+      headers = headers.set('Authorization',`Bearer ${token}`);
+      return this.http.get<IUser>(this.baseUrl+ 'account', {headers}).pipe(
+        map((user: IUser) =>{
+          localStorage.setItem('token', user.token);
+          console.log('user',user);
+          this.currentUserSource.next(user);
+        })
+      )
     }
-
-    let headers = new HttpHeaders();
-    headers = headers.set('Authorization',`Bearer ${token}`);
-
-    return this.http.get<IUser>(this.baseUrl+ 'account', {headers}).pipe(
-      map((user: IUser) =>{
-        localStorage.setItem('token', user.token);
-        this.currentUserSource.next(user);
-      })
-    )
-
+    this.currentUserSource.next(null as any);
   }
 
   login(values: any){
