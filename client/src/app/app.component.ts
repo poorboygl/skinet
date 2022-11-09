@@ -18,14 +18,12 @@ export class AppComponent implements OnInit  {
   }
 
   loadCurrentUser(){
-    const token = localStorage.getItem('token');
-    if(token){
-      this.accountService.loadCurrentUser(token).subscribe({
-        next: () => console.log('Loaded User'),
-        error: (e) => console.log(e)
-        // ,complete: () => console.info('complete') 
-      });
-    }
+    const token = JSON.parse(localStorage.getItem('token')!) || "";
+    this.accountService.loadCurrentUser(token).subscribe?({
+      next : () => console.log('Loaded User'),
+      error: (e: any ) => console.log(e)
+      // ,complete: () => console.info('complete') 
+    }): null;
   }
 
   loadBasket(){
