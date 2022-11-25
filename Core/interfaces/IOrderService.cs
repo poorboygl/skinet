@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Entities.OrderAggregate;
 
-namespace Core.interfaces
+namespace Core.Interfaces
 {
     public interface IOrderService
     {

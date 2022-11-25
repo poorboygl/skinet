@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Entities.Identity;
 
-namespace Core.interfaces
+namespace Core.Interfaces
 {
     public interface ITokenService
     {
