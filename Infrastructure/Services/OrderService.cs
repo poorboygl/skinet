@@ -11,10 +11,7 @@ namespace Infrastructure.Services
 {
     public class OrderService : IOrderService
     {
-        private readonly IGenericRepository<Order> _orderRepo;
-        private readonly IGenericRepository<DeliveryMethod> _dmRepo;
         private readonly IBasketRepository _basketRepo;
-        private readonly IGenericRepository<Product> _productRepo;
         private readonly IUnitOfWork _unitOfWork;
         public OrderService( IBasketRepository basketRepo, IUnitOfWork unitOfWork)
         {
