@@ -35,5 +35,31 @@ namespace API.Controllers
             if(order == null) return BadRequest(new ApiResponse(400, "Problem creating order"));
             return Ok(order);
         }
+
+        [HttpGet]
+        public async Task<ActionResult<IReadOnlyList<Order>>> GetOrderForUser()
+        {
+            var email = HttpContext.User.RetrieveEmailFormPrinciple();
+            var order  = await _orderService.GetOrdersForUserAsync(email);
+            return Ok(order);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Order>> GetOrderByIdForUser(int id)
+        {
+            var email = HttpContext.User.RetrieveEmailFormPrinciple();
+
+            var order = await _orderService.GetOrderByIdAsync(id, email);
+
+            if(order == null) return NotFound(new ApiResponse(404));
+            return order;
+        }
+
+        [HttpGet("deliveryMethods")]
+        public async Task<ActionResult<IReadOnlyList<DeliveryMethod>>> GetDeliveryMethods()
+        {
+            return Ok(await _orderService.GetDeliveryMethodsAsync());
+        }
+
     }
 }
